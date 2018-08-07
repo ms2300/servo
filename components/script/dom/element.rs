@@ -237,12 +237,13 @@ impl FromStr for AdjacentPosition {
 // Element methods
 //
 impl Element {
-    pub fn create(name: QualName,
-                  is: Option<LocalName>,
-                  document: &Document,
-                  creator: ElementCreator,
-                  mode: CustomElementCreationMode)
-                  -> DomRoot<Element> {
+    pub fn create(
+        name: QualName,
+        is: Option<LocalName>,
+        document: &Document,
+        creator: ElementCreator,
+        mode: CustomElementCreationMode,
+    ) -> DomRoot<Element> {
         create_element(name, is, document, creator, mode)
     }
 

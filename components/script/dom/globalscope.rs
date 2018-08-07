@@ -416,14 +416,22 @@ impl GlobalScope {
 
     /// Evaluate JS code on this global scope.
     pub fn evaluate_js_on_global_with_result(
-            &self, code: &str, rval: MutableHandleValue) -> bool {
+        &self,
+        code: &str,
+        rval: MutableHandleValue
+    ) -> bool {
         self.evaluate_script_on_global_with_result(code, "", rval, 1)
     }
 
     /// Evaluate a JS script on this global scope.
     #[allow(unsafe_code)]
     pub fn evaluate_script_on_global_with_result(
-            &self, code: &str, filename: &str, rval: MutableHandleValue, line_number: u32) -> bool {
+        &self,
+        code: &str,
+        filename: &str,
+        rval: MutableHandleValue,
+        line_number: u32,
+    ) -> bool {
         let metadata = time::TimerMetadata {
             url: if filename.is_empty() {
                 self.get_url().as_str().into()
@@ -449,9 +457,13 @@ impl GlobalScope {
 
                 debug!("evaluating Dom string");
                 let result = unsafe {
-                    Evaluate2(cx, options.ptr, code.as_ptr(),
-                              code.len() as libc::size_t,
-                              rval)
+                    Evaluate2(
+                        cx,
+                        options.ptr,
+                        code.as_ptr(),
+                        code.len() as libc::size_t,
+                        rval
+                    )
                 };
 
                 if !result {
