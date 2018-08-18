@@ -590,6 +590,11 @@ impl HTMLScriptElement {
             rval.handle_mut(),
             line_number,
         );
+
+        // Step 9
+        if is_execution_stack_empty() {
+            global.perform_a_microtask_checkpoint();
+        }
     }
 
     pub fn queue_error_event(&self) {
