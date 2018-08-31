@@ -113,13 +113,14 @@ fn create_svg_element(name: QualName,
 
 // https://dom.spec.whatwg.org/#concept-create-element
 #[allow(unsafe_code)]
-fn create_html_element(name: QualName,
-                       prefix: Option<Prefix>,
-                       is: Option<LocalName>,
-                       document: &Document,
-                       creator: ElementCreator,
-                       mode: CustomElementCreationMode)
-                       -> DomRoot<Element> {
+fn create_html_element(
+    name: QualName,
+    prefix: Option<Prefix>,
+    is: Option<LocalName>,
+    document: &Document,
+    creator: ElementCreator,
+    mode: CustomElementCreationMode
+) -> DomRoot<Element> {
     assert_eq!(name.ns, ns!(html));
 
     // Step 4
